@@ -9,7 +9,7 @@ X = 1
 FONT_NAME = 'Verdana'
 FONT_SIZE = CELL_SIZE // 4
 
-
+#loading images
 FIELD_IMAGE = pygame.transform.scale(pygame.image.load('game_data/images/field.png'), (WIN_SIZE, WIN_SIZE))
 O_IMAGE = pygame.transform.scale(pygame.image.load('game_data/images/O.png'), (CELL_SIZE, CELL_SIZE))
 X_IMAGE = pygame.transform.scale(pygame.image.load('game_data/images/X.png'), (CELL_SIZE, CELL_SIZE))
@@ -61,7 +61,7 @@ def main():
                 board = [[EMPTY, EMPTY, EMPTY] for _ in range(3)]
                 player_turn = X
                 winner = EMPTY
-
+        #render screen
         screen.fill(pygame.Color('black'))
         screen.blit(FIELD_IMAGE, (0, 0))
 
@@ -71,7 +71,7 @@ def main():
                     screen.blit(X_IMAGE, (x * CELL_SIZE, y * CELL_SIZE))
                 elif cell == O:
                     screen.blit(O_IMAGE, (x * CELL_SIZE, y * CELL_SIZE))
-
+        #winner condition
         winner = check_winner(board)
         if winner is not EMPTY:
             winner_text = 'Player "X" wins!' if winner == X else 'Player "O" wins!'

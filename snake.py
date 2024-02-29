@@ -3,7 +3,7 @@ import time
 import random
 
 snake_speed = 15
-
+# dimensions of window
 window_x = 720
 window_y = 480
 
@@ -71,7 +71,7 @@ while True:
             if event.key == pygame.K_RIGHT:
                 change_to = 'RIGHT'
 
-    # Two keys are tapped at same time, no collision
+    # if two keys are tapped at same time, no collision
     if change_to == 'UP' and direction != 'DOWN':
         direction = 'UP'
     if change_to == 'DOWN' and direction != 'UP':
@@ -81,7 +81,7 @@ while True:
     if change_to == 'RIGHT' and direction != 'LEFT':
         direction = 'RIGHT'
 
-    # Moving the snake
+    # moving the snake
     if direction == 'UP':
         snake_position[1] -= 10
     if direction == 'DOWN':
@@ -91,7 +91,7 @@ while True:
     if direction == 'RIGHT':
         snake_position[0] += 10
 
-    # Snake body growing mechanism
+    # snake body growing mechanism
 
     snake_body.insert(0, list(snake_position))
     if snake_position[0] == fruit_position[0] and snake_position[1] == fruit_position[1]:
@@ -113,13 +113,13 @@ while True:
     pygame.draw.rect(game_window, white, pygame.Rect(
         fruit_position[0], fruit_position[1], 10, 10))
 
-    # Game Over conditions
+    # game Over conditions
     if snake_position[0] < 0 or snake_position[0] > window_x - 10:
         game_over()
     if snake_position[1] < 0 or snake_position[1] > window_y - 10:
         game_over()
 
-    # Touching the snake body
+    # touching the snake body
     for block in snake_body[1:]:
         if snake_position[0] == block[0] and snake_position[1] == block[1]:
             game_over()
@@ -127,7 +127,6 @@ while True:
     # displaying score continuously
     show_score(1, white, 'times new roman', 20)
 
-    # Refresh game screen
     pygame.display.update()
 
     # Frame Per Second /Refresh Rate
